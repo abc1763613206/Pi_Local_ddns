@@ -25,10 +25,15 @@ def ddns(domain):
 
     
 def getip():
-    global LocalIP
-    sock = socket.create_connection(('ns1.dnspod.net', 6666), 20)
-    LocalIP = sock.recv(16)
-    sock.close()
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(('ns.dnspod.net', 6666))
+        ip = s.getsockname()[0]
+    except:
+        ip = "x.x.x.x"
+    finally:
+        s.close()
+    return ip
 
 
 def getHostIP(domain):
@@ -45,7 +50,7 @@ if __name__ == '__main__':
     Domains = conf['domains']
     
     try:
-        getip()
+        LocalIP=getip()
         for domain in Domains:
             getHostIP(domain)
             if HostIP != LocalIP:
