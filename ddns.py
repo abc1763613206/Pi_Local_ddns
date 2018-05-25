@@ -27,7 +27,7 @@ def ddns(domain):
 def getip():
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        s.connect(('ns1.dnspod.net', 6666))
+        s.connect(('www.baidu.com', 0))
         ip = s.getsockname()[0]
     except:
         ip = "x.x.x.x"
