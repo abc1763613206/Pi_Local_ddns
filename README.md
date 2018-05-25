@@ -1,5 +1,5 @@
 # ddns.py
-
+##### （已修改成为获取内网IP（大部分树莓派处于公网NAT环境下，获取公网IP基本无用），若想获取公网IP请用原作者版本）
 ```bash
 @author tinko
 @version 0.1.0
